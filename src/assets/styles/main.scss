@@ -1,0 +1,81 @@
+@import "./variables.scss";
+@import "./home.scss";
+
+body {
+  background-color: $background-color;
+  color: white;
+}
+
+.text-primary {
+  color: $primary-color;
+}
+
+.text-secondary {
+  color: $secondary-color;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-colum {
+  flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.text-white,
+.section-title {
+  color: white;
+}
+
+.section-title {
+  text-align: start;
+}
+
+.seciton-x-padding {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.text-start {
+  text-align: start;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.h-100 {
+  width: 100%;
+}
