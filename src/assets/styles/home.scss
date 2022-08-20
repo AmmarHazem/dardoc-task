@@ -385,6 +385,8 @@ $search-input-border-radius: 7px;
         .movie-category-list-item {
           cursor: pointer;
           height: 15rem;
+          background-color: $highligh-color;
+          border-radius: 15px;
           aspect-ratio: 11 / 16;
 
           img {

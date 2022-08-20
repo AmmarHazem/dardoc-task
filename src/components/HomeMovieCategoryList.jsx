@@ -26,7 +26,7 @@ const HomeMovieCategoryList = ({ category }) => {
   let content;
   if (loading && !response) {
     content = (
-      <div className="flex justify-center">
+      <div className="flex justify-center w-100">
         <Loading size={70} />
       </div>
     );
