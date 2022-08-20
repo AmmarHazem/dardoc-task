@@ -1,25 +1,26 @@
-import PopularMovieItem from "./PopularMovieItem";
-import image1 from "../assets/images/1.jpeg";
-import image2 from "../assets/images/2.jpeg";
+import SideMenuMovieItem from "./SideMenuMovieItem";
+import useGetPopularMovies from "../customHooks/useGetPopularMovies";
 
 const SideMenuPopularMovies = () => {
+  const [loading, response] = useGetPopularMovies({});
+
   return (
     <div className="side-menu-popular-movies">
       <h4 className="text-white text-start">Popular Movies</h4>
-      <PopularMovieItem
-        title="House Of The Dragon"
-        image={image1}
-        description="House of the dragon is an amazing fantasy serise"
-        likes="100"
-        rating="4.4"
-      />
-      <PopularMovieItem
-        title="House Of The Dragon"
-        image={image2}
-        description="House of the dragon is an amazing fantasy serise"
-        likes="100"
-        rating="4.4"
-      />
+      {response &&
+        response.results &&
+        response.results.slice(0, 2).map((item) => {
+          return (
+            <SideMenuMovieItem
+              key={item.id}
+              title={item.original_title}
+              image={item.poster_path}
+              description={item.overview}
+              likes="100"
+              rating={item.vote_average}
+            />
+          );
+        })}
     </div>
   );
 };

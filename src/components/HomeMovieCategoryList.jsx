@@ -1,50 +1,53 @@
-import image1 from "../assets/images/1.jpeg";
-import image2 from "../assets/images/2.jpeg";
+import { useState, useEffect } from "react";
+import useGetMovieCategory from "../customHooks/useGetMovieCategory";
+import Loading from "./Loading";
+import { imagesBaseURL } from "../constants";
 
-const HomeMovieCategoryList = ({ title }) => {
+const HomeMovieCategoryList = ({ category }) => {
+  const [page, setPage] = useState(0);
+  const [loading, response] = useGetMovieCategory({
+    endpoint: category.endpoint,
+    page,
+  });
+
+  useEffect(() => {
+    setPage(1);
+  }, []);
+
+  let content;
+  if (loading) {
+    content = <Loading size={70} />;
+  } else if (!response) {
+    content = <h4 className="text-white">Something went wrong</h4>;
+  } else if (response.results.lenght === 0) {
+    content = <h4 className="text-white">No Movies found</h4>;
+  } else {
+    content = (
+      <>
+        {response.results.map((item) => (
+          <MovieCategoryListItem key={item.id} movie={item} />
+        ))}
+      </>
+    );
+  }
+
   return (
     <section className="home-movie-category-list">
-      <h2 className="section-title seciton-x-padding">{title}</h2>
+      <h2 className="section-title seciton-x-padding">{category.name}</h2>
       <div className="movies-list seciton-x-padding no-scrollbar">
-        <MovieCategoryListItem image={image1} title="House Of The Dragon" />
-        <MovieCategoryListItem
-          image={image2}
-          title="Everything Everywhere All At Once"
-        />
-        <MovieCategoryListItem image={image1} title="House Of The Dragon" />
-        <MovieCategoryListItem
-          image={image2}
-          title="Everything Everywhere All At Once"
-        />
-        <MovieCategoryListItem image={image1} title="House Of The Dragon" />
-        <MovieCategoryListItem
-          image={image2}
-          title="Everything Everywhere All At Once"
-        />
-        <MovieCategoryListItem image={image1} title="House Of The Dragon" />
-        <MovieCategoryListItem
-          image={image2}
-          title="Everything Everywhere All At Once"
-        />
-        <MovieCategoryListItem image={image1} title="House Of The Dragon" />
-        <MovieCategoryListItem
-          image={image2}
-          title="Everything Everywhere All At Once"
-        />
-        <MovieCategoryListItem image={image1} title="House Of The Dragon" />
-        <MovieCategoryListItem
-          image={image2}
-          title="Everything Everywhere All At Once"
-        />
+        {content}
       </div>
     </section>
   );
 };
 
-const MovieCategoryListItem = ({ image, title }) => {
+const MovieCategoryListItem = ({ movie }) => {
   return (
     <div className="movie-category-list-item">
-      <img src={image} alt={title} />
+      <img
+        src={`${imagesBaseURL}${movie.poster_path}`}
+        alt={movie.original_title}
+      />
     </div>
   );
 };
