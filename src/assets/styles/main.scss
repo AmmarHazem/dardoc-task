@@ -1,5 +1,7 @@
 @import "./variables.scss";
 @import "./home.scss";
+@import "./left_side_menu.scss";
+@import "right_side_menu.scss";
 
 body {
   background-color: $background-color;
@@ -106,4 +108,19 @@ body {
 
 .p-0 {
   padding: 0px;
+}
+
+.left-side-menu,
+.right-side-menu {
+  height: 100vh;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  background-color: $background-light-color;
+  color: #aaa;
+  padding-top: 2rem;
+}
+
+.mb-0 {
+  margin-bottom: 0px;
 }

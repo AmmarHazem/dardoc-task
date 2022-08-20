@@ -62,7 +62,7 @@ const HomeDiscoverSection = () => {
 
   return (
     <section className="home-discover-section">
-      <h2 className="section-title seciton-x-padding">Discovers</h2>
+      <h2 className="section-title seciton-x-padding mb-0">Discovers</h2>
       <div
         onScroll={onListScroll}
         className="discover-list no-scrollbar seciton-x-padding"

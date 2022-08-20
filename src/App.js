@@ -1,4 +1,4 @@
-import "./App.css";
+import "./assets/styles/App.css";
 import "antd/dist/antd.css";
 import "./assets/styles/main.scss";
 import Home from "./routes/Home";

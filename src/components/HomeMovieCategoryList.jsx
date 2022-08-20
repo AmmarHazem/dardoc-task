@@ -59,7 +59,7 @@ const HomeMovieCategoryList = ({ category }) => {
 
   return (
     <section className="home-movie-category-list">
-      <h2 className="section-title seciton-x-padding">{category.name}</h2>
+      <h2 className="section-title seciton-x-padding mb-0">{category.name}</h2>
       <div
         onScroll={onListScroll}
         className="movies-list seciton-x-padding no-scrollbar"

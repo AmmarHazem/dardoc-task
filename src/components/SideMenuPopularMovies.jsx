@@ -2,9 +2,7 @@ import SideMenuMovieItem from "./SideMenuMovieItem";
 import useGetPopularMovies from "../customHooks/useGetPopularMovies";
 
 const SideMenuPopularMovies = () => {
-  const [loading, response] = useGetPopularMovies({});
-
-  // console.log("--- SideMenuPopularMovies", response?.results);
+  const [_, response] = useGetPopularMovies({});
 
   return (
     <div className="side-menu-popular-movies">

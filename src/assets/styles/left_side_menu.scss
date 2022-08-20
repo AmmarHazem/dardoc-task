@@ -1,0 +1,40 @@
+.left-side-menu {
+  width: 14rem;
+  min-width: 14rem;
+
+  .menu-items {
+    list-style: none;
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+    .menu-section-title {
+      font-size: 0.7rem;
+      text-align: start;
+      padding: 0px $left-menu-x-padding;
+      margin-bottom: 0.5rem;
+      margin-top: 2rem;
+    }
+
+    .right-menu-btn {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem $left-menu-x-padding;
+      cursor: pointer;
+      transition: all 0.1s ease-in;
+      border-left: 2px solid transparent;
+
+      &.active {
+        color: $primary-color;
+        background-color: $highligh-color;
+        border-left: 2px solid $primary-color;
+      }
+
+      &:hover {
+        color: white;
+        background-color: $highligh-color;
+      }
+    }
+  }
+}
