@@ -90,3 +90,20 @@ body {
   border-radius: 50%;
   object-fit: cover;
 }
+
+.loading-spin {
+  color: $primary-color;
+}
+
+.pt-3 {
+  padding-top: 1rem;
+}
+
+.px-3 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.p-0 {
+  padding: 0px;
+}

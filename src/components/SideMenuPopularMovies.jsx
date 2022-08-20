@@ -4,6 +4,8 @@ import useGetPopularMovies from "../customHooks/useGetPopularMovies";
 const SideMenuPopularMovies = () => {
   const [loading, response] = useGetPopularMovies({});
 
+  // console.log("--- SideMenuPopularMovies", response?.results);
+
   return (
     <div className="side-menu-popular-movies">
       <h4 className="text-white text-start">Popular Movies</h4>

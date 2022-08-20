@@ -14,9 +14,22 @@ const HomeMovieCategoryList = ({ category }) => {
     setPage(1);
   }, []);
 
+  const onListScroll = (e) => {
+    if (page >= response.total_pages) return;
+    if (loading) return;
+    const viewWidth = e.target.offsetWidth + 100;
+    if (e.target.scrollLeft >= e.target.scrollWidth - viewWidth) {
+      setPage((prevState) => prevState + 1);
+    }
+  };
+
   let content;
-  if (loading) {
-    content = <Loading size={70} />;
+  if (loading && !response) {
+    content = (
+      <div className="flex justify-center">
+        <Loading size={70} />
+      </div>
+    );
   } else if (!response) {
     content = <h4 className="text-white">Something went wrong</h4>;
   } else if (response.results.lenght === 0) {
@@ -24,9 +37,22 @@ const HomeMovieCategoryList = ({ category }) => {
   } else {
     content = (
       <>
-        {response.results.map((item) => (
-          <MovieCategoryListItem key={item.id} movie={item} />
-        ))}
+        {response.results.map((item, index) => {
+          const component = (
+            <MovieCategoryListItem key={item.id} movie={item} />
+          );
+          if (loading && index === response.results.length - 1) {
+            return (
+              <div key={item.id} className="flex align-center">
+                {component}
+                <div className="px-3">
+                  <Loading size={40} />
+                </div>
+              </div>
+            );
+          }
+          return component;
+        })}
       </>
     );
   }
@@ -34,7 +60,10 @@ const HomeMovieCategoryList = ({ category }) => {
   return (
     <section className="home-movie-category-list">
       <h2 className="section-title seciton-x-padding">{category.name}</h2>
-      <div className="movies-list seciton-x-padding no-scrollbar">
+      <div
+        onScroll={onListScroll}
+        className="movies-list seciton-x-padding no-scrollbar"
+      >
         {content}
       </div>
     </section>

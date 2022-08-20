@@ -11,7 +11,16 @@ const useGetPopularMovies = ({ page = 1 }) => {
       setLoading(true);
       const res = await getPopular({ page });
       setLoading(false);
-      setPopularMovies(res);
+      setPopularMovies((prevState) => {
+        const prevResults = prevState?.results ?? [];
+        const newResults = [...prevResults, ...res.results];
+        return {
+          page: res.page,
+          results: newResults,
+          total_pages: res.total_pages,
+          total_results: res.total_results,
+        };
+      });
     })();
   }, [page]);
 

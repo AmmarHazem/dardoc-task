@@ -2,12 +2,14 @@ import HomeDiscoverSection from "./HomeDiscoverSection";
 import HomeMovieCategoryList from "./HomeMovieCategoryList";
 import { movieCategories } from "../data";
 import useGlobalContext from "../customHooks/useGlobalContext";
+import HomeHeader from "./HomeHeader";
 
 const HomeMainContent = () => {
   const { selectedCategoryIDs } = useGlobalContext();
 
   return (
     <main className="home-main-content no-scrollbar">
+      <HomeHeader />
       <HomeDiscoverSection />
       {movieCategories
         .filter((item) => {

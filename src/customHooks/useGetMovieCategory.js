@@ -11,7 +11,17 @@ const useGetMovieCategory = ({ endpoint, page = 1 }) => {
       setLoading(true);
       const res = await getMovieCategory({ endpoint, page });
       setLoading(false);
-      setResponse(res);
+      setResponse((prevState) => {
+        const prevResults = prevState?.results ?? [];
+        const newResults = [...prevResults, ...res.results];
+        return {
+          page: res.page,
+          results: newResults,
+          total_pages: res.total_pages,
+          total_results: res.total_results,
+        };
+      });
+      // setResponse(res);
     })();
   }, [page, endpoint]);
 
