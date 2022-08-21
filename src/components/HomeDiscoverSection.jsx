@@ -20,6 +20,8 @@ const HomeDiscoverSection = () => {
     }
   };
 
+  // console.log("--- popular movies", popularMovies.results);
+
   let content;
   if (loading && !popularMovies) {
     content = (
@@ -42,6 +44,7 @@ const HomeDiscoverSection = () => {
               title={item.original_title}
               subtitle={item.overview}
               rating={item.vote_average}
+              genresIDs={item.genre_ids}
             />
           );
           if (loading && index === popularMovies.results.length - 1) {

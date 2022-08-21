@@ -153,6 +153,13 @@ $search-input-border-radius: 7px;
     }
   }
 
+  .left-side-menu {
+    .logo {
+      padding-left: $left-menu-x-padding;
+      padding-right: $left-menu-x-padding;
+    }
+  }
+
   .left-side-menu,
   .right-side-menu {
     width: 100%;

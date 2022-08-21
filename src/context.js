@@ -5,6 +5,7 @@ export const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [searchText, setSearchText] = useState("");
   const [selectedCategoryIDs, setSelectedCategoryIDs] = useState([]);
+  const [movieGenresMap, setMovieGenresMap] = useState(null);
 
   const selectCategoryID = ({ id }) => {
     if (selectedCategoryIDs.includes(id)) {
@@ -21,6 +22,8 @@ export const AppProvider = ({ children }) => {
         setSearchText,
         selectedCategoryIDs,
         selectCategoryID,
+        movieGenresMap,
+        setMovieGenresMap,
       }}
     >
       {children}
